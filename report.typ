@@ -9,7 +9,14 @@
       corresponding: true,
       email: "<user email>",
     ),
-    // Add the remaining group members here, each as its own dictionary entry.
+    (
+      name: [Jokūbas Narvydas],
+      affiliations: ("a",),
+    ),
+    (
+      name: [Domas Pitrėnas],
+      affiliations: ("a",),
+    ),
   ),
   affiliations: (
     "a": [Group Assignment, Empirical Finance],
@@ -66,7 +73,7 @@ The shrinkage factor $kappa$ lies in $(0,1)$: it approaches one when the signal 
 
 The design has a practical advantage over frequentist corrections. Benjamini and Yekutieli control the false discovery rate by inflating p-values uniformly, which costs power everywhere (@benjamini2001control). The Bayesian posterior shrinks each factor according to its own precision, so it gives up little power when genuine factors are common and shrinks hard when they are rare. JKP estimate the hyperparameters by maximum likelihood from the cross-section of factors, giving EB-Region, which learns a prior within a region, and EB-All, which pools information across regions.
 
-@tab:hyper reports the estimated dispersions. The world cluster dispersion is 0.37\% per month and the idiosyncratic dispersion is 0.23\%. The signal dispersion implies a prior standard deviation near 0.27\% per month, which sets the scale of what counts as a plausible factor.
+Table @tab:hyper reports the estimated dispersions. The world cluster dispersion is 0.37\% per month and the idiosyncratic dispersion is 0.23\%. The signal dispersion implies a prior standard deviation near 0.27\% per month, which sets the scale of what counts as a plausible factor.
 
 #figure(
   table(
@@ -95,7 +102,7 @@ Construction choices are documented and public. Factors use tercile sorts with b
 
 = Internal validity
 
-Does a factor survive when the researcher holds the signal fixed and changes the test? @tab:ladder stacks the answers, and the stack is the paper's central exhibit.
+Does a factor survive when the researcher holds the signal fixed and changes the test? Table @tab:ladder stacks the answers, and the stack is the paper's central exhibit.
 
 #figure(
   table(
@@ -147,7 +154,7 @@ Out-of-sample alpha declines, and the decline is informative. The global in-samp
 
 = The critique
 
-Campbell Harvey, discussing the paper, accepts the arithmetic and disputes the assumption beneath it. The empirical Bayes rate is an average over the assumed share of true factors, and JKP estimate that share from the same data that produce the factors. Harvey holds the target false discovery rate at 5\% and varies the assumed share. @tab:harvey reports the result.
+Campbell Harvey, discussing the paper, accepts the arithmetic and disputes the assumption beneath it. The empirical Bayes rate is an average over the assumed share of true factors, and JKP estimate that share from the same data that produce the factors. Harvey holds the target false discovery rate at 5\% and varies the assumed share. Table @tab:harvey reports the result.
 
 #figure(
   table(

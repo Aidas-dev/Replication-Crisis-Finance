@@ -1,0 +1,7 @@
+# Text extracts from the source PDF. Regenerate them with pdftotext.
+jf_raw.txt
+jf_clean.txt
+jf_layout.txt
+
+# Superseded drafts.
+report2c.pdf

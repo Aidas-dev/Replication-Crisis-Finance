@@ -7,7 +7,7 @@
       name: [Aidas Kriščiūnas],
       affiliations: ("a",),
       corresponding: true,
-      email: "<user email>",
+      email: "149402833+Aidas-dev@users.noreply.github.com",
     ),
     (
       name: [Jokūbas Narvydas],
@@ -73,23 +73,26 @@ The shrinkage factor $kappa$ lies in $(0,1)$: it approaches one when the signal 
 
 The design has a practical advantage over frequentist corrections. Benjamini and Yekutieli control the false discovery rate by inflating p-values uniformly, which costs power everywhere (@benjamini2001control). The Bayesian posterior shrinks each factor according to its own precision, so it gives up little power when genuine factors are common and shrinks hard when they are rare. JKP estimate the hyperparameters by maximum likelihood from the cross-section of factors, giving EB-Region, which learns a prior within a region, and EB-All, which pools information across regions.
 
-Table @tab:hyper reports the estimated dispersions. The world cluster dispersion is 0.37\% per month and the idiosyncratic dispersion is 0.23\%. The signal dispersion implies a prior standard deviation near 0.27\% per month, which sets the scale of what counts as a plausible factor.
+Table @tab:hyper reports the estimated dispersions. The world cluster dispersion is 0.37\% per month and the idiosyncratic dispersion is 0.23\%. The two dispersions combine into a prior standard deviation of $sqrt(0.37^2 + 0.23^2) = 0.44\%$ per month, which sets the scale of what counts as a plausible factor.
 
 #figure(
   table(
     columns: 4,
     table.header([Sample], [Cluster dispersion (\%/mo)], [Idiosyncratic dispersion (\%/mo)], [Signal dispersion (\%/mo)]),
-    [World], [0.37], [0.23], [0.10],
+    [World], [0.37], [0.23], [],
     [United States], [0.35], [0.21], [],
-    [Developed ex-US], [0.24], [0.18], [],
+    [Developed], [0.24], [0.18], [],
     [Emerging], [0.32], [0.24], [],
-    [US mega], [0.29], [0.16], [],
-    [US small], [0.31], [0.26], [],
-    [US micro], [0.44], [0.32], [],
-    [US nano], [0.48], [0.28], [],
+    [USA, developed and emerging], [0.30], [0.19], [0.10],
+    [World ex-US], [0.29], [0.20], [],
+    [US mega], [0.26], [0.16], [],
+    [US large], [0.31], [0.18], [],
+    [US small], [0.44], [0.26], [],
+    [US micro], [0.48], [0.32], [],
+    [US nano], [0.42], [0.28], [],
   ),
   kind: table,
-  caption: [Empirical Bayes hyperparameters by sample, estimated by maximum likelihood. Signal dispersion is identified at the world level and implies a prior standard deviation near 0.27\% per month. Adapted from Table I of @jensen2023replication.],
+  caption: [Empirical Bayes hyperparameters by sample, estimated by maximum likelihood. The signal dispersion is identified only when several regions are estimated jointly. Adapted from Table I of @jensen2023replication.],
 ) <tab:hyper>
 
 Two further results follow. Proposition 1 formalises the signature of alpha-hacking: if authors mine data, the slope of out-of-sample alphas on in-sample alphas falls below the Bayesian benchmark near 0.9 and the intercept turns negative. The remaining propositions extend the framework to correlated evidence across factors and to a multilevel model that loads each alpha on cluster and theme effects.
@@ -136,7 +139,7 @@ Three features stand out. The choice between raw returns and risk-adjusted alpha
   caption: [Replication across US size groups under empirical Bayes. Rates stay high through the mega and large groups, so the result does not rest on micro-caps. Adapted from Figure 5 of @jensen2023replication.],
 ) <tab:size>
 
-The rate is not an artefact of a generous prior. Replacing the estimated prior with one implied by out-of-sample data leaves the US rate at 81.5\%, and a conservative simulation of 2,458 factors with 68.3\% zero alpha gives 79.8\%. The posterior implies an expected true share of 94\%, a Bayesian false discovery rate of 0.1\%, and a family-wise error rate of 5.5\%.
+The rate is not an artefact of a generous prior. Replacing the estimated prior with one estimated on out-of-sample data alone, $tau_c = 0.27\%$ and $tau_w = 0.22\%$, leaves the US rate at 81.5\%, and a conservative simulation of 2,458 factors with 68.3\% zero alpha gives 79.8\%. The posterior implies an expected true share of 94\%, a Bayesian false discovery rate of 0.1\%, and a family-wise error rate of 5.5\%.
 
 = Themes and economic significance
 
@@ -154,7 +157,7 @@ Out-of-sample alpha declines, and the decline is informative. The global in-samp
 
 = The critique
 
-Campbell Harvey, discussing the paper, accepts the arithmetic and disputes the assumption beneath it. The empirical Bayes rate is an average over the assumed share of true factors, and JKP estimate that share from the same data that produce the factors. Harvey holds the target false discovery rate at 5\% and varies the assumed share. Table @tab:harvey reports the result.
+Campbell Harvey, discussing the paper, accepts the arithmetic and disputes the assumption beneath it (@harvey2022discussion). The empirical Bayes rate is an average over the assumed share of true factors, and JKP estimate that share from the same data that produce the factors. Harvey holds the target false discovery rate at 5\% and varies the assumed share. Table @tab:harvey reports the result.
 
 #figure(
   table(
@@ -166,7 +169,7 @@ Campbell Harvey, discussing the paper, accepts the arithmetic and disputes the a
     [1], [56.4], [4.7], [77.0],
   ),
   kind: table,
-  caption: [Prior sensitivity of false discovery rates, holding the target at 5\%. Empirical Bayes performs well when genuine factors are common and degrades sharply when they are rare, while Benjamini-Hochberg stays near target. Harvey's reconstruction.],
+  caption: [Prior sensitivity of false discovery rates, holding the target at 5\%. Empirical Bayes performs well when genuine factors are common and degrades sharply when they are rare, while Benjamini-Hochberg stays near target. Reconstruction from @harvey2022discussion.],
 ) <tab:harvey>
 
 The asymmetry is the substance of the objection. Empirical Bayes inherits the optimism of the data when the true share is low, and Benjamini-Hochberg does not. If half the anomalies are real, the Bayesian rate is sound; if one in a hundred is real, the Bayesian false discovery rate climbs to 56.4\%. Harvey's conclusion, that the first step toward resolving the crisis is to acknowledge it, is a claim about how much weight the evidence can bear. JKP answer that their prior is estimated rather than assumed, and that the data deliver a share near one half.

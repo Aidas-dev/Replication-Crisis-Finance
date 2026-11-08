@@ -110,7 +110,7 @@ Posterior mean:
 - A Bonferroni-type correction, such as Benjamini-Yekutieli, controls false discoveries by inflating every p-value. It pays a large cost in power.
 - The Bayesian posterior does the same job with information: it shrinks hard when true alphas are rare and barely shrinks when they are common.
 - Empirical Bayes estimates the dispersion of true alphas from the cross-section, either within a region or pooled across all regions.
-- In simulation with 1,297 factors, uncorrected OLS lets the false discovery rate reach 25 percent. Both corrections control it. Only the Bayesian one keeps power.
+- In a simulation of 130 factors in 13 clusters, uncorrected OLS lets the false discovery rate reach 25 percent. Both corrections control it. Only the Bayesian one keeps power.
 
 == The data
 

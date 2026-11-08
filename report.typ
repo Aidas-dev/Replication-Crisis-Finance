@@ -7,7 +7,7 @@
       name: [Aidas Kriščiūnas],
       affiliations: ("a",),
       corresponding: true,
-      email: "149402833+Aidas-dev@users.noreply.github.com",
+      email: "aidas.krisciunas@evaf.stud.vu.lt",
     ),
     (
       name: [Jokūbas Narvydas],

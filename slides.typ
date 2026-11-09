@@ -73,7 +73,7 @@
   margin: 0pt,
   background: image("assets/facets.svg", width: 100%, height: 100%),
 )[
-  #place(top + left, dx: 0.95cm, dy: 0.65cm, image("assets/vu-logo-white.png", width: 2.6cm))
+  #place(top + left, dx: 0.4cm, dy: 0.25cm, image("assets/vu-logo-white.png", width: 2cm))
   #place(bottom + left, dx: 0.95cm, dy: -0.8cm)[
     #block(width: 10.4cm)[
       #text(font: display, size: 19pt, fill: white)[Is There a Replication Crisis in Finance?]
@@ -328,7 +328,7 @@
   margin: 0pt,
   background: image("assets/facets.svg", width: 100%, height: 100%),
 )[
-  #place(top + left, dx: 0.95cm, dy: 0.65cm, image("assets/vu-logo-white.png", width: 2.2cm))
+  #place(top + left, dx: 0.4cm, dy: 0.25cm, image("assets/vu-logo-white.png", width: 1.8cm))
   #align(center + horizon)[
     #block(width: 11cm)[
       #text(font: display, size: 16pt, fill: white)[Is There a Replication Crisis in Finance?]

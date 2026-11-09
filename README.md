@@ -17,6 +17,12 @@ Each command writes a PDF next to its source: `report.pdf` and `slides.pdf`. The
 
 Commit both PDFs after a change, so the published copies match the sources.
 
+## Cue cards
+
+`flashcards/` holds one cue card per slide, in screen order. Open `flashcards/deck.html` in a phone browser to swipe between the cards. After you edit a card, rebuild the swipe deck with:
+
+    bun flashcards/build.js
+
 ## Theme
 
 The palette comes from `wildcat/beamercolorthemewildcat.sty`: burgundy `#7D2035`, its tints, and the gold accent `#FFD100`. The facet background is `assets/facets.svg`, and the white VU mark is `assets/vu-logo-white.png`. The deck uses the TeX Gyre Heros and Adventor fonts, which ship with TeX Live and are embedded in the PDF.

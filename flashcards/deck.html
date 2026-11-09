@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#7D2035">
+<title>Cue cards</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body {
+    background: #fff; color: #1A1A1A;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: clamp(17px, 4.3vw, 21px); line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+  }
+  #deck {
+    display: flex; height: 100vh; height: 100dvh;
+    overflow-x: auto; overflow-y: hidden;
+    scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+  #deck::-webkit-scrollbar { display: none; }
+  section {
+    flex: 0 0 100%; height: 100vh; height: 100dvh;
+    overflow-y: auto; scroll-snap-align: start; scroll-snap-stop: always;
+    box-sizing: border-box;
+    padding: calc(58px + env(safe-area-inset-top)) 22px calc(48px + env(safe-area-inset-bottom));
+  }
+  h1 { font-size: 1.2em; color: #7D2035; line-height: 1.25; margin: 0 0 1rem; }
+  h1::after {
+    content: ""; display: block; width: 2.2rem; height: 3px;
+    background: #FFD100; margin-top: .45rem;
+  }
+  h2 { font-size: .95em; color: #7D2035; margin: 1.3rem 0 .35rem; }
+  p { margin: .6em 0; }
+  ul { padding-left: 1.15em; margin: .5em 0; }
+  li { margin: .45em 0; }
+  li::marker { color: #7D2035; }
+  a { color: #7D2035; }
+  #bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 2;
+    display: flex; align-items: center; justify-content: space-between;
+    height: calc(44px + env(safe-area-inset-top));
+    padding: env(safe-area-inset-top) 18px 0;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, .97);
+    border-bottom: 1px solid #E6D9DD;
+    font-size: 12px; letter-spacing: .02em; color: #7D2035;
+  }
+  #bar span:first-child { text-transform: uppercase; }
+  #label { font-variant-numeric: tabular-nums; }
+  #progress {
+    position: fixed; left: 0; bottom: 0; height: 3px; width: 0;
+    background: #FFD100; z-index: 2; transition: width .15s linear;
+  }
+  #hint {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(14px + env(safe-area-inset-bottom));
+    font-size: 12px; color: #8C8C8C; z-index: 2;
+    transition: opacity .4s;
+  }
+  @media (prefers-color-scheme: dark) {
+    body { background: #fff; color: #1A1A1A; }
+  }
+</style>
+</head>
+<body>
+<div id="bar"><span>Cue cards</span><span id="label"></span></div>
+<div id="deck">
+<section id="p1" data-label="Cue cards"><h1>Cue cards</h1>
+<p>One card per slide. Each card fits one phone screen.
+Open the card that matches the slide on screen. Cards 02 to 14 carry the same
+number as the footer, 1 / 14 to 13 / 14.</p>
+<p>Plan: 12 minutes of talk, then questions. The slot allows 10 to 15 minutes.</p>
+<h2>Timing</h2>
+<ul>
+<li>01 Title: 15 seconds</li>
+<li>02 The claim under test: 45 seconds</li>
+<li>03 The two challenges: 55 seconds</li>
+<li>04 Three moves: 40 seconds</li>
+<li>05 The model: 70 seconds</li>
+<li>06 Why shrinkage wins: 60 seconds</li>
+<li>07 The data: 50 seconds</li>
+<li>08 The replication ladder: 70 seconds</li>
+<li>09 Size groups and themes: 50 seconds</li>
+<li>10 Out-of-sample decay: 60 seconds</li>
+<li>11 Economic value: 50 seconds</li>
+<li>12 The main objection: 60 seconds</li>
+<li>13 Three more objections: 55 seconds</li>
+<li>14 Verdict: 50 seconds</li>
+<li>15 Close: 20 seconds</li>
+</ul>
+<p>Total: 12 minutes.</p>
+<p>If you have 10 minutes, cut the detail on card 07 and the second objection on card 13.
+If you have 15 minutes, add one worked example on card 05 and one on card 11.</p>
+<h2>Cards</h2>
+<ul>
+<li><a href="#p2">01 Title slide</a></li>
+<li><a href="#p3">02 The claim under test</a></li>
+<li><a href="#p4">03 The two challenges</a></li>
+<li><a href="#p5">04 Three moves</a></li>
+<li><a href="#p6">05 The model</a></li>
+<li><a href="#p7">06 Why shrinkage wins</a></li>
+<li><a href="#p8">07 The data</a></li>
+<li><a href="#p9">08 The replication ladder</a></li>
+<li><a href="#p10">09 Size groups and themes</a></li>
+<li><a href="#p11">10 Out-of-sample decay</a></li>
+<li><a href="#p12">11 Economic value</a></li>
+<li><a href="#p13">12 The main objection</a></li>
+<li><a href="#p14">13 Three more objections</a></li>
+<li><a href="#p15">14 Verdict</a></li>
+<li><a href="#p16">15 Close</a></li>
+<li><a href="#p17">16 Numbers sheet</a></li>
+<li><a href="#p18">17 Likely questions</a></li>
+</ul>
+<h2>How to use a card</h2>
+<p>Read the goal line before the slide appears.
+Speak the say lines in your own words. Do not read them.
+Touch the numbers on the point-at line.
+End with the next line, then change the slide.</p>
+</section>
+<section id="p2" data-label="Title slide"><h1>Title slide</h1>
+<p>Time: 15 seconds.</p>
+<p>Goal: the room knows who speaks and what question the talk answers.</p>
+<p>Say:</p>
+<ul>
+<li>This is a review of a 2023 paper in the Journal of Finance.</li>
+<li>The question is simple. Does finance have a replication crisis?</li>
+<li>The authors answer no, and they build a new test and a new dataset to make the case.</li>
+</ul>
+<p>Next: &quot;Start with the charge they answer.&quot;</p>
+</section>
+<section id="p3" data-label="1 / 14"><h1>1 / 14 The claim under test</h1>
+<p>Time: 45 seconds.</p>
+<p>Goal: the room knows the charge and the headline answer.</p>
+<p>Say:</p>
+<ul>
+<li>Several papers say that most published factors fail to replicate.</li>
+<li>Two charges sit behind that claim. Results break when the method changes, and the rest come from searching too many signals.</li>
+<li>Jensen, Kelly and Pedersen accept the question and report that over 80 percent of factors replicate.</li>
+<li>The fight is not about arithmetic. It is about which test counts.</li>
+</ul>
+<p>Point at: &quot;over 80 percent&quot;.</p>
+<p>Next: &quot;Take the two charges one at a time.&quot;</p>
+</section>
+<section id="p4" data-label="2 / 14"><h1>2 / 14 The two challenges</h1>
+<p>Time: 55 seconds.</p>
+<p>Goal: the two charges are different, and both sound serious.</p>
+<p>Say:</p>
+<ul>
+<li>Internal validity asks whether a result survives a change of method or data.</li>
+<li>Hou, Xue and Zhang rebuilt 447 anomalies. 286 are insignificant at 5 percent, and 380 fail at a t-statistic above 3.</li>
+<li>Their average alpha is 0.26 percent per month. They call the literature full of p-hacking.</li>
+<li>External validity asks whether the result is real at all. Cochrane calls the field a factor zoo, and Harvey, Liu and Zhu raise the bar to a t-statistic of 3.</li>
+<li>One charge says the results are fragile. The other says the search itself makes them false.</li>
+</ul>
+<p>Point at: 286, 380, 0.26.</p>
+<p>Next: &quot;The paper answers with three moves.&quot;</p>
+<p>If asked &quot;What is p-hacking?&quot;: it means testing many signals and reporting only the significant ones.</p>
+</section>
+<section id="p5" data-label="3 / 14"><h1>3 / 14 Three moves</h1>
+<p>Time: 40 seconds.</p>
+<p>Goal: the room sees the structure of the paper.</p>
+<p>Say:</p>
+<ul>
+<li>First, a model. It puts a prior on the true alpha and shrinks each estimate toward zero.</li>
+<li>Second, a dataset. 153 factors in 93 countries, with public construction rules.</li>
+<li>Third, a reassessment. The authors test the factors inside the sample, outside it, and in other countries.</li>
+<li>The model comes first, because it decides what counts as evidence.</li>
+</ul>
+<p>Next: &quot;Start with the model.&quot;</p>
+</section>
+<section id="p6" data-label="4 / 14"><h1>4 / 14 The model</h1>
+<p>Time: 70 seconds.</p>
+<p>Goal: alpha is the part of the return that the market cannot explain.</p>
+<p>Say:</p>
+<ul>
+<li>Each factor return splits into three parts. The market return, a constant alpha, and noise.</li>
+<li>Alpha is the object of the test.</li>
+<li>The prior says alpha is zero on average. A factor can deviate, but the model expects that most do not.</li>
+<li>The estimate shrinks by kappa. Kappa is below one, and it moves toward one when the sample is long or the estimate is precise.</li>
+<li>A short noisy backtest gets shrunk hard. A long precise one keeps most of its alpha.</li>
+</ul>
+<p>Point at: the three equations.</p>
+<p>Next: &quot;That is why the paper prefers shrinkage to a p-value penalty.&quot;</p>
+<p>If asked &quot;Why not a normal t-test?&quot;: a t-test treats each factor alone. The model borrows evidence across all 153 factors.</p>
+</section>
+<section id="p7" data-label="5 / 14"><h1>5 / 14 Why shrinkage wins</h1>
+<p>Time: 60 seconds.</p>
+<p>Goal: the Bayesian correction keeps power that a p-value correction loses.</p>
+<p>Say:</p>
+<ul>
+<li>Benjamini-Yekutieli raises every p-value. It controls false discoveries and loses power everywhere.</li>
+<li>The Bayesian posterior learns how much to shrink from the same data.</li>
+<li>It shrinks hard when true alphas are rare, and little when they are common.</li>
+<li>In a simulation of 130 factors, the uncorrected test lets the false discovery rate reach 25 percent.</li>
+<li>Both corrections fix that. Only the Bayesian one keeps the power to find real factors.</li>
+</ul>
+<p>Point at: 25 percent.</p>
+<p>Next: &quot;Now the data.&quot;</p>
+<p>If asked &quot;What is a false discovery?&quot;: a factor reported as real that is truly zero.</p>
+</section>
+<section id="p8" data-label="6 / 14"><h1>6 / 14 The data</h1>
+<p>Time: 50 seconds.</p>
+<p>Goal: the dataset is built, not scraped, and the rules are public.</p>
+<p>Say:</p>
+<ul>
+<li>The sample starts from 202 signals that Hou, Xue and Zhang catalogued. Those signals expand to 452 portfolios.</li>
+<li>The authors keep one holding period and the latest accounting data, and add 15 factors. That gives 153.</li>
+<li>Construction is deliberate. Tercile sorts, breakpoints from big stocks, capped value weights, and a 10 percent volatility scale for every factor.</li>
+<li>The sample covers 93 markets. 23 are developed, 27 are emerging, and 43 appear only in the world portfolio.</li>
+</ul>
+<p>Point at: 153, 93.</p>
+<p>Next: &quot;With the data in place, here is the headline.&quot;</p>
+</section>
+<section id="p9" data-label="7 / 14"><h1>7 / 14 The replication ladder</h1>
+<p>Time: 70 seconds.</p>
+<p>Goal: the rate rises when the test matches the theory.</p>
+<p>Say:</p>
+<ul>
+<li>The grey bar is the original test on raw returns, at 35 percent.</li>
+<li>The same test on this sample gives 55.6 percent. The sample is longer and the factors are built more carefully.</li>
+<li>The big step is risk adjustment. CAPM alpha lifts the rate to 82.4 percent.</li>
+<li>A multiple-testing correction costs some power at 75.6, and the Bayesian model returns to 82.4.</li>
+<li>Read the ladder from bottom to top. The story is about the test, not the data.</li>
+</ul>
+<p>Point at: 35.0, 55.6, 82.4, 75.6.</p>
+<p>Next: &quot;The result is not a micro-cap artifact.&quot;</p>
+<p>If asked &quot;Is 82 percent just a loose test?&quot;: the benchmark follows from theory, and card 12 shows what happens when you doubt the prior.</p>
+</section>
+<section id="p10" data-label="8 / 14"><h1>8 / 14 Size groups and themes</h1>
+<p>Time: 50 seconds.</p>
+<p>Goal: the result does not live only in tiny stocks, and the factors group into themes.</p>
+<p>Say:</p>
+<ul>
+<li>Replication stays high across size. Mega caps reach 77.3 percent, small and micro caps 85.7, and nano caps 68.1.</li>
+<li>So the result does not rest on tiny illiquid stocks.</li>
+<li>The 153 factors fall into 13 themes. Eleven replicate in at least half of the specifications.</li>
+<li>The two failures are low leverage and size. Ten themes earn a significant weight in the tangency portfolio.</li>
+</ul>
+<p>Point at: 68.1.</p>
+<p>Next: &quot;Does it survive outside the United States?&quot;</p>
+</section>
+<section id="p11" data-label="9 / 14"><h1>9 / 14 Out-of-sample decay</h1>
+<p>Time: 60 seconds.</p>
+<p>Goal: returns fall after publication, and the model predicts the fall.</p>
+<p>Say:</p>
+<ul>
+<li>Global alpha is 0.49 percent per month in sample and 0.26 out of sample. That is a 47 percent fall.</li>
+<li>McLean and Pontiff report a 58 percent fall, so the size is familiar.</li>
+<li>The authors say this is not a failure. A Bayesian expects attenuation.</li>
+<li>The slope of out-of-sample on in-sample alpha is 0.57 before publication, 0.26 after, and 0.35 pooled. The benchmark is 0.9.</li>
+<li>Some results at the top were mined, but the average factor still earns a positive alpha.</li>
+</ul>
+<p>Point at: 0.49, 0.26, 0.57.</p>
+<p>Next: &quot;Does it pay?&quot;</p>
+<p>If asked &quot;What does attenuation mean?&quot;: the measured alpha falls toward its prior, because part of the estimate was noise.</p>
+</section>
+<section id="p12" data-label="10 / 14"><h1>10 / 14 Economic value</h1>
+<p>Time: 50 seconds.</p>
+<p>Goal: the surviving factors carry real economic weight.</p>
+<p>Say:</p>
+<ul>
+<li>The market Sharpe ratio is 0.13 per month. The tangency portfolio of themes reaches 0.80.</li>
+<li>That number uses in-sample weights, so the honest comparison is the cross-validated 0.56.</li>
+<li>Factors that Bayes keeps and Benjamini-Yekutieli rejects earn 0.35 percent per month in the US, at a t-statistic of 5.1.</li>
+<li>An information ratio near 1 says the gain is not just extra risk.</li>
+</ul>
+<p>Point at: 0.13, 0.80, 0.56.</p>
+<p>Next: &quot;The main objection is about the prior.&quot;</p>
+<p>If asked &quot;Is 0.56 a high Sharpe ratio?&quot;: it is very high for a monthly figure, and it comes from a portfolio of published factors.</p>
+</section>
+<section id="p13" data-label="11 / 14"><h1>11 / 14 The main objection</h1>
+<p>Time: 60 seconds.</p>
+<p>Goal: the answer depends on a prior that the data cannot fix.</p>
+<p>Say:</p>
+<ul>
+<li>Campbell Harvey accepts the arithmetic and disputes the prior.</li>
+<li>Empirical Bayes estimates how many factors are true from the same data.</li>
+<li>If few are true, the method is too optimistic, because it shrinks too little.</li>
+<li>He holds the target false discovery rate at 5 percent and varies the share of true factors.</li>
+<li>At a 50 percent share the Bayesian rate is 5.7 percent. At a 1 percent share it climbs to 56.4, while Benjamini-Hochberg stays near target.</li>
+<li>The answer depends on a number that the data cannot pin down.</li>
+</ul>
+<p>Point at: 56.4 and 4.7.</p>
+<p>Next: &quot;Two more objections matter.&quot;</p>
+<p>If asked &quot;Does that kill the paper?&quot;: no, it limits the claim. The paper is strongest when many factors are real.</p>
+</section>
+<section id="p14" data-label="12 / 14"><h1>12 / 14 Three more objections</h1>
+<p>Time: 55 seconds.</p>
+<p>Goal: the paper has three further soft spots, and each is bounded.</p>
+<p>Say:</p>
+<ul>
+<li>Benchmark choice. Raw returns give 35 percent, and CAPM alpha gives 82.</li>
+<li>The defense is that theory prescribes risk adjustment, but the looser test also gives the headline.</li>
+<li>Decay. Returns fall after publication, and the authors answer that the model predicts the fall.</li>
+<li>A 2025 test asks a different question. Can a standard six-factor model explain the factors?</li>
+<li>It explains 132 of 153, so 21 remain.</li>
+</ul>
+<p>Next: &quot;So what is the takeaway?&quot;</p>
+</section>
+<section id="p15" data-label="13 / 14"><h1>13 / 14 Verdict</h1>
+<p>Time: 50 seconds.</p>
+<p>Goal: the narrow claim falls, the broad claim stays open.</p>
+<p>Say:</p>
+<ul>
+<li>The narrow claim is hard to defend now. Most factors survive when the test is a pricing model and the correction is Bayesian.</li>
+<li>The broad claim stays open. How much of the factor zoo is real depends on the prior.</li>
+<li>The data give a weak signal about that prior.</li>
+<li>The dataset is the durable contribution. It is public, global, and it will outlast this debate.</li>
+</ul>
+<p>Next: &quot;That is the paper. Questions welcome.&quot;</p>
+</section>
+<section id="p16" data-label="Close"><h1>Close</h1>
+<p>Time: 20 seconds.</p>
+<p>Goal: end cleanly and invite questions.</p>
+<p>Say:</p>
+<ul>
+<li>Thank the room.</li>
+<li>Repeat the citation and the data link.</li>
+<li>Invite questions on the prior, the benchmark, or the data.</li>
+</ul>
+<p>Point at: jkpfactors.com.</p>
+</section>
+<section id="p17" data-label="Numbers sheet"><h1>Numbers sheet</h1>
+<p>Every number in the deck, with the meaning of each.</p>
+<h2>Replication rates</h2>
+<ul>
+<li>35.0 percent: Hou, Xue and Zhang, raw returns.</li>
+<li>55.6 percent: the same test on this sample.</li>
+<li>61.3 percent: after dropping 34 factors that the original papers found insignificant.</li>
+<li>82.4 percent: CAPM alpha, ordinary least squares. That is 98 of 119 factors.</li>
+<li>75.6 percent: CAPM alpha with Benjamini-Yekutieli.</li>
+<li>82.4 percent: CAPM alpha with empirical Bayes.</li>
+<li>77.3, 79.8, 85.7, 85.7, 68.1 percent: US mega, large, small, micro, and nano caps.</li>
+</ul>
+<h2>The two challenges</h2>
+<ul>
+<li>286 of 447: anomalies insignificant at 5 percent in Hou, Xue and Zhang.</li>
+<li>380 of 447: anomalies insignificant at a t-statistic above 3.</li>
+<li>0.26 percent: mean high-minus-low alpha in that paper.</li>
+</ul>
+<h2>Data</h2>
+<ul>
+<li>153: factors in this paper.</li>
+<li>202: characteristic signals in the source list.</li>
+<li>452: portfolios in the source list.</li>
+<li>93: countries. 23 developed, 27 emerging, 43 world-only.</li>
+<li>13: themes after clustering.</li>
+</ul>
+<h2>Out of sample</h2>
+<ul>
+<li>0.49 to 0.26 percent per month: in-sample to out-of-sample alpha, a fall of 47 percent.</li>
+<li>58 percent: the fall that McLean and Pontiff report.</li>
+<li>87.4 percent: factors with a positive alpha in the combined out-of-sample period.</li>
+<li>0.57, 0.26, 0.35: slope of out-of-sample alpha on in-sample alpha before, after, and pooled. The benchmark is 0.9.</li>
+<li>0.4 percent per month: real-time posterior mean alpha from the mid-1980s.</li>
+</ul>
+<h2>Economic value</h2>
+<ul>
+<li>0.13, 0.80, 0.56: Sharpe ratios for the market, the ex-post tangency portfolio, and cross-validation.</li>
+<li>0.35 percent at a t-statistic of 5.1: alpha of factors that Bayes keeps and Benjamini-Yekutieli rejects.</li>
+<li>0.93 and 1.10: information ratios in the US and outside it.</li>
+</ul>
+<h2>Posterior checks</h2>
+<ul>
+<li>94 percent: expected share of true factors.</li>
+<li>0.1 percent: Bayesian false discovery rate.</li>
+<li>5.5 percent: Bayesian family-wise error rate.</li>
+</ul>
+<h2>The objection</h2>
+<ul>
+<li>5.7, 14.0, 33.6, 56.4 percent: Bayesian false discovery rate at assumed true shares of 50, 25, 5, and 1 percent.</li>
+<li>2.6, 3.8, 4.5, 4.7 percent: the Benjamini-Hochberg rate at the same shares.</li>
+</ul>
+<h2>The 2025 test</h2>
+<ul>
+<li>132 of 153: factors that a six-factor model explains.</li>
+<li>21: factors that remain.</li>
+</ul>
+</section>
+<section id="p18" data-label="Likely questions"><h1>Likely questions</h1>
+<h2>Why CAPM and not Fama-French?</h2>
+<p>Fama-French contains size and value. Those are factors under test, so the benchmark absorbs part of the answer.</p>
+<h2>How can this paper find 82 percent when other papers find 35?</h2>
+<p>The other papers test raw returns. This paper tests CAPM alpha. Risk adjustment moves the rate by about 27 points.</p>
+<h2>Does shrinkage throw away real factors?</h2>
+<p>It shrinks by precision. A precise estimate keeps most of its alpha. The simulation shows that the power loss is small when real factors are common.</p>
+<h2>Why do returns fall after publication?</h2>
+<p>Part of the in-sample alpha comes from search. Investors also trade away part of the rest. A Bayesian expects the estimate to fall toward the prior.</p>
+<h2>What is the false discovery rate?</h2>
+<p>It is the expected share of reported discoveries that are false. At 5 percent, one in twenty reported factors is false on average.</p>
+<h2>Where are the data and code?</h2>
+<p>The data are at jkpfactors.com. The code is at github.com/bkelly-lab/jkp-data. The code runs through WRDS, so the raw CRSP and Compustat data stay licensed.</p>
+<h2>What is the 2025 test?</h2>
+<p>A working paper asks whether a standard six-factor model can explain each factor. It explains 132 of the 153 factors, so 21 remain.</p>
+<h2>Is the result sensitive to the prior?</h2>
+<p>Yes. Card 12 shows the table. At a 1 percent share of true factors, the Bayesian false discovery rate is 56.4 percent.</p>
+</section>
+</div>
+<div id="progress"></div>
+<div id="hint">Swipe</div>
+<script>
+  const deck = document.getElementById("deck");
+  const secs = [...deck.children];
+  const label = document.getElementById("label");
+  const bar = document.getElementById("progress");
+  const hint = document.getElementById("hint");
+  let raf = 0;
+  let touched = false;
+
+  function idx() {
+    return Math.round(deck.scrollLeft / Math.max(1, deck.clientWidth));
+  }
+  function sync() {
+    const i = Math.min(secs.length - 1, Math.max(0, idx()));
+    label.textContent = secs[i].dataset.label || "";
+    bar.style.width = ((i + 1) / secs.length) * 100 + "%";
+    if (location.hash !== "#" + secs[i].id) {
+      history.replaceState(null, "", "#" + secs[i].id);
+    }
+    if (touched || i > 0) hint.style.opacity = 0;
+  }
+  function go(i, smooth) {
+    i = Math.max(0, Math.min(secs.length - 1, i));
+    touched = true;
+    deck.scrollTo({ left: i * deck.clientWidth, behavior: smooth ? "smooth" : "auto" });
+  }
+
+  deck.addEventListener("scroll", () => {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(sync);
+  }, { passive: true });
+
+  addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "PageDown") { e.preventDefault(); go(idx() + 1, true); }
+    if (e.key === "ArrowLeft" || e.key === "PageUp") { e.preventDefault(); go(idx() - 1, true); }
+  });
+
+  deck.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#p"]');
+    if (!a) return;
+    e.preventDefault();
+    go(Number(a.getAttribute("href").slice(2)) - 1, true);
+  });
+
+  addEventListener("resize", () => go(idx(), false));
+
+  const m = location.hash.match(/^#p(\d+)/);
+  if (m) go(Number(m[1]) - 1, false);
+  sync();
+</script>
+</body>
+</html>

@@ -33,18 +33,18 @@ Several papers argue that financial economics faces a replication crisis.
 
 #v(0.4em)
 
-- Most published factors cannot be replicated with the same data, or fail once the method changes slightly.
+- Most published factors cannot be replicated with the same data. They also fail when the method changes slightly.
 - The factor zoo is the product of searching too many signals without controlling false discoveries.
 
 #v(0.6em)
 
-Jensen, Kelly and Pedersen accept the question and reject the answer. They report that *over 80 percent* of equity factors replicate.
+Jensen, Kelly and Pedersen take the question seriously. They report that *over 80 percent* of equity factors replicate.
 
 #v(0.4em)
 
-#text(size: 0.85em)[The disagreement is not about arithmetic. It is about which evidence counts and which prior is defensible.]
+#text(size: 0.85em)[The two sides agree on the arithmetic. They disagree about which evidence counts and how much weight to give the assumption that most factors are false.]
 
-== Two challenges, not one
+== The two challenges
 
 #grid(
   columns: (1fr, 1fr),
@@ -52,7 +52,7 @@ Jensen, Kelly and Pedersen accept the question and reject the answer. They repor
   [
     *Internal validity*
 
-    - Hou, Xue and Zhang (2020): 286 of 447 anomalies insignificant at 5 percent, 380 at a t above 3.
+    - Hou, Xue and Zhang (2020) find that 286 of 447 anomalies are insignificant at 5 percent. At a t-statistic above 3, 380 are insignificant.
     - Mean high-minus-low alpha of 0.26 percent per month.
     - Verdict: the literature is "infested with widespread p-hacking".
   ],
@@ -60,7 +60,7 @@ Jensen, Kelly and Pedersen accept the question and reject the answer. They repor
     *External validity*
 
     - Cochrane (2011): a "zoo" of factors.
-    - Harvey, Liu and Zhu (2016): a t above 3 as the threshold, because hundreds of factors were tried.
+    - Harvey, Liu and Zhu (2016) set the threshold at a t-statistic above 3, because researchers tried hundreds of factors.
     - Verdict: most claimed findings are likely false.
   ],
 )
@@ -69,11 +69,11 @@ Jensen, Kelly and Pedersen accept the question and reject the answer. They repor
 
 #v(0.3em)
 
-*1. A Bayesian model of factor replication.* A prior on true alphas turns multiple testing into shrinkage instead of a p-value penalty.
+*1. A Bayesian model of factor replication.* A prior on the true alphas replaces the penalty on each p-value with shrinkage toward zero.
 
 #v(0.6em)
 
-*2. A new global dataset.* 153 factors in 93 countries, with construction choices documented and public.
+*2. A new global dataset.* 153 factors in 93 countries, with public construction rules.
 
 #v(0.6em)
 
@@ -103,14 +103,14 @@ Posterior mean:
 
 #v(0.4em)
 
-#text(size: 0.85em)[The benchmark is CAPM, chosen because it is not mechanically tied to size and value. The shrinkage factor $kappa$ sits between zero and one, and it rises with the dispersion of true alphas.]
+#text(size: 0.85em)[Jensen, Kelly and Pedersen use CAPM as the benchmark because it does not absorb size and value. The shrinkage factor $kappa$ lies between zero and one. It increases when the true alphas vary more.]
 
 == Why shrinkage beats a p-value penalty
 
-- A Bonferroni-type correction, such as Benjamini-Yekutieli, controls false discoveries by inflating every p-value. It pays a large cost in power.
-- The Bayesian posterior does the same job with information: it shrinks hard when true alphas are rare and barely shrinks when they are common.
+- A correction such as Benjamini-Yekutieli controls false discoveries by inflating every p-value. It costs much statistical power.
+- The Bayesian posterior does the same job with information. It shrinks strongly when true alphas are rare, and it shrinks little when they are common.
 - Empirical Bayes estimates the dispersion of true alphas from the cross-section, either within a region or pooled across all regions.
-- In a simulation of 130 factors in 13 clusters, uncorrected OLS lets the false discovery rate reach 25 percent. Both corrections control it. Only the Bayesian one keeps power.
+- In a simulation of 130 factors, the uncorrected test lets the false discovery rate reach 25 percent. The frequentist correction and the Bayesian correction both keep the rate low. Only the Bayesian correction keeps power.
 
 == The data
 
@@ -131,7 +131,7 @@ Posterior mean:
     - Tercile sorts with independent breakpoints
     - At least five stocks per leg, sixty monthly observations
     - Capped value weights
-    - Each factor scaled to 10 percent annualised idiosyncratic volatility
+    - Each factor scaled to 10 percent annualized idiosyncratic volatility
   ],
 )
 
@@ -155,7 +155,7 @@ Posterior mean:
 
 #text(size: 0.8em)[Replication rates in percent. The 82.4 figure means 98 factors significant in both the original and the replication, out of 119 examined.]
 
-== It holds across size and themes
+== Replication across size groups and themes
 
 #grid(
   columns: (1fr, 1fr),
@@ -189,20 +189,20 @@ Posterior mean:
 
 #v(0.5em)
 
-#text(size: 0.8em)[The micro-cap objection does not survive: replication rates are flat across the size distribution.]
+#text(size: 0.8em)[Replication rates stay above 68 percent in every size group, so the result does not rest on micro-caps.]
 
-== Out-of-sample, the decay is expected
+== Out-of-sample decay is expected
 
-- Global alpha is 0.49 percent per month in sample and 0.26 percent out of sample, a fall of 47 percent. McLean and Pontiff report 58 percent.
+- Global alpha is 0.49 percent per month in sample and 0.26 percent out of sample, a fall of 47 percent. McLean and Pontiff report a fall of 58 percent.
 - 87.4 percent of factors keep a positive alpha in the combined out-of-sample period.
-- The slope of out-of-sample on in-sample alpha is 0.57 before the original publication, 0.26 after it, and 0.35 pooled.
-- That pattern is the alpha-hacking signature the model predicts. Attenuation after publication is what a Bayesian should expect, not evidence against replication.
+- The slope of the out-of-sample alpha on the in-sample alpha is 0.57 before the original publication, 0.26 after it, and 0.35 pooled.
+- The model predicts this pattern when authors search the data for strong results. A Bayesian expects the return after publication to fall. The fall alone does not show that the factor is false.
 
 #v(0.6em)
 
-#text(size: 0.85em)[The posterior on mean alpha has been stable near 0.4 percent per month since the mid 1980s, and its confidence interval has narrowed from 0.16 to 0.10 percent.]
+#text(size: 0.85em)[The posterior on mean alpha stayed near 0.4 percent per month from the mid-1980s. Its confidence interval narrowed from 0.16 to 0.10 percent.]
 
-== Does it pay?
+== Economic value
 
 #grid(
   columns: (1fr, 1fr),
@@ -215,21 +215,21 @@ Posterior mean:
     - Pseudo-out-of-sample cross-validation: 0.56
   ],
   [
-    *Factors the Bayesian keeps*
+    *Factors that empirical Bayes accepts*
 
-    - Rejected by Benjamini-Yekutieli, accepted by empirical Bayes
-    - 0.35 percent per month in the US, t of 5.1
-    - Information ratio 0.93 in the US and 1.10 outside it
+    - Benjamini-Yekutieli rejects these factors and empirical Bayes accepts them.
+    - 0.35 percent per month in the US, with a t-statistic of 5.1
+    - Information ratio of 0.93 in the US and 1.10 outside it
   ],
 )
 
 #v(0.6em)
 
-#text(size: 0.85em)[The 0.80 figure uses in-sample optimisation, which is why the 0.56 cross-validated number matters more.]
+#text(size: 0.85em)[The 0.80 figure comes from in-sample optimization. The 0.56 figure comes from cross-validation, so 0.56 is the number to trust.]
 
-== The critique
+== The main objection
 
-Harvey accepts the arithmetic and attacks the prior. If few anomalies are true, empirical Bayes inherits that optimism.
+Harvey accepts the arithmetic and disputes the prior. If few anomalies are real, empirical Bayes reports too many discoveries.
 
 #v(0.5em)
 
@@ -254,31 +254,31 @@ Harvey accepts the arithmetic and attacks the prior. If few anomalies are true, 
 
 #v(0.5em)
 
-#text(size: 0.85em)[False discovery rates in percent, holding the target at 5 percent. The frequentist correction stays near target. The Bayesian rate collapses once the true share falls.]
+#text(size: 0.85em)[False discovery rates in percent, holding the target at 5 percent. The frequentist correction stays near target. When the assumed share of true factors is small, the Bayesian false discovery rate is high.]
 
 == Three more objections
 
-*The benchmark choice.* Hou, Xue and Zhang test raw returns and get 35 percent. This paper tests CAPM alphas and gets 82. The defence is theoretically sound, and the loosest benchmark also produces the highest rate.
+*The benchmark choice.* Hou, Xue and Zhang test raw returns and get 35 percent. This paper tests CAPM alphas and gets 82. The defense follows from theory. The loosest benchmark also gives the highest rate.
 
 #v(0.5em)
 
-*Decay.* Factor returns are 26 percent lower out of sample and 58 percent lower after publication. The authors answer that the model predicts this.
+*Decay.* Factor returns are 26 percent lower out of sample and 58 percent lower after publication. The authors answer that the model predicts the decay.
 
 #v(0.5em)
 
-*A 2025 spanning test.* On this paper's own 153 US factors, a Bayesian sequential procedure classifies 132 as spanned by a six-factor benchmark, leaving 27.
+*A 2025 test.* A recent working paper asks whether a standard six-factor model explains each of this paper's 153 US factors. It explains 132, so 21 remain.
 
 == Verdict
 
-*What the paper settles.* Published factors do survive replication once the benchmark is a pricing model and the multiple-testing correction is Bayesian. That is a real result, on the largest sample built so far.
+*What the paper settles.* Most published factors survive replication once the benchmark is a pricing model and the correction is Bayesian. The sample is the largest built so far.
 
 #v(0.5em)
 
-*What it leaves open.* How much of the cross-section is real depends on the share of true factors, and the data give a weak signal about that share. Harvey's sensitivity table is the honest statement of the limit.
+*What it leaves open.* How much of the cross-section is real depends on the share of true factors, and the data give a weak signal about that share. Harvey's sensitivity table shows the limit.
 
 #v(0.5em)
 
-*Net effect.* The burden of proof has shifted. A claim that replication fails now needs to beat a documented, public, global dataset. A claim that the zoo is mostly noise still has a case.
+*Net effect.* The burden of proof moved. A claim that replication fails must now answer a public dataset that anyone can download. A claim that most factors are noise can still be argued.
 
 == Thank you
 
@@ -299,5 +299,5 @@ Harvey accepts the arithmetic and attacks the prior. If few anomalies are true, 
 
   #v(0.5em)
 
-  #text(size: 0.85em)[Questions and discussion welcome.]
+  #text(size: 0.85em)[Questions and discussion are welcome.]
 ]
